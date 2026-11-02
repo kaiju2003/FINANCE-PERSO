@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIJU FINANCE</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              emerald: '#10b981',
+              mint: '#34d399',
+              dark: '#030507',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen pb-24 antialiased selection:bg-brand-emerald/30 selection:text-brand-mint">
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-10">
+
+    <!-- Header Dynamic Island -->
+    <header class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/5 gap-4">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-emerald via-emerald-500 to-teal-400 text-zinc-950 flex items-center justify-center font-extrabold text-xl shadow-lg glow-effect">
+          K
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl font-extrabold tracking-tight text-white">FINANCE <span class="text-brand-mint font-semibold">PERSO</span></h1>
+            <span class="ios-pill px-3 py-0.5 text-[10px] font-mono font-bold text-brand-mint border border-emerald-500/30 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-mint animate-ping"></span>
+              CLEAN STATE
+            </span>
+          </div>
+          <p class="text-xs text-zinc-400 mt-0.5">Tableau de bord financier vierge & Wave Vault</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <button onclick="toggleQRModal()" class="ios-pill px-4 py-2.5 text-xs font-bold text-white hover:bg-white/10 transition-all flex items-center gap-2 border-emerald-500/30">
+          <i data-lucide="qr-code" class="w-4 h-4 text-brand-mint"></i>
+          Scanner Mobile
+        </button>
+        <button onclick="openNewMonthModal()" class="ios-pill px-4 py-2.5 text-xs font-extrabold text-zinc-950 bg-brand-mint hover:bg-brand-emerald transition-all flex items-center gap-1.5 shadow-md">
+          <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+          Créer un mois
+        </button>
+        <button onclick="hardResetData()" class="ios-pill px-3 py-2.5 text-xs font-medium text-zinc-400 hover:text-white transition-all" title="Tout effacer">
+          <i data-lucide="rotate-ccw" class="w-4 h-4 text-brand-emerald"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation dynamique par Mois -->
+    <div class="mt-8">
+      <div class="ios-pill p-1.5 flex items-center gap-2 overflow-x-auto scrollbar-none" id="monthTabs"></div>
+    </div>
+
+    <!-- Dashboard Core -->
+    <div class="mt-8 space-y-6" id="mainDashboard">
+
+      <!-- Carte Principale Salaire / Revenu -->
+      <div class="ios-card p-7 relative overflow-hidden border-emerald-500/20">
+        <div class="absolute -right-12 -top-12 w-48 h-48 bg-brand-emerald/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+          <div class="space-y-1">
+            <span class="text-[11px] font-bold text-brand-mint uppercase tracking-widest flex items-center gap-1.5">
+              <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i>
+              Revenu / Salaire Actif (<span id="activeMonthTitle" class="text-white">--</span>)
+            </span>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl sm:text-4xl font-extrabold font-mono text-white tracking-tight" id="displayIncome">0 FCFA</span>
+              <button onclick="toggleSalaryEdit()" class="ios-pill p-2 text-zinc-400 hover:text-brand-mint transition-colors" title="Modifier">
+                <i data-lucide="edit-3" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Form edit salaire -->
+          <div id="salaryEditForm" class="hidden flex items-center gap-2 ios-pill p-2">
+            <input type="number" id="inputSalary" placeholder="Entrer ton salaire..." class="bg-transparent text-white text-sm font-mono px-3 py-1.5 focus:outline-none w-36">
+            <button onclick="saveSalary()" class="bg-brand-emerald text-zinc-950 font-bold text-xs px-4 py-2 rounded-xl transition-all shadow-md">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="ios-card p-6 space-y-3">
+          <div class="flex items-center justify-between text-zinc-400">
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-400">Dépenses Totales</span>
+            <div class="ios-pill p-2 text-rose-400 bg-rose-500/10">
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="text-2xl font-extrabold font-mono text-white" id="statExpenses">0 FCFA</div>
+          <div class="text-[11px] text-zinc-400 font-mono" id="statExpensePercent">0% du revenu</div>
+        </div>
+
+        <div class="ios-card p-6 space-y-3 border-emerald-500/20">
+          <div class="flex items-center justify-between text-zinc-400">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-mint">Reste Libre</span>
+            <div class="ios-pill p-2 text-brand-mint bg-brand-emerald/10">
+              <i data-lucide="wallet" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="text-2xl font-extrabold font-mono text-white" id="statSavings">0 FCFA</div>
+          <div class="text-[11px] text-brand-mint font-bold font-mono" id="statSavingsRate">Épargne : 0%</div>
+        </div>
+
+        <div class="ios-card p-6 space-y-3">
+          <div class="flex items-center justify-between text-zinc-400">
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Statut Financier</span>
+            <div class="ios-pill p-2 text-teal-300 bg-teal-500/10">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="text-base font-extrabold text-white mt-1" id="statStatusText">Prêt à démarrer</div>
+          <p class="text-[11px] text-zinc-400">Aucune donnée enregistrée</p>
+        </div>
+      </div>
+
+      <!-- Split 50/50 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="ios-card p-6 border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-zinc-950/60 to-transparent relative overflow-hidden">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-bold text-brand-mint uppercase tracking-wider">
+                <i data-lucide="lock" class="w-4 h-4 text-brand-emerald"></i>
+                Coffre Wave (50%)
+              </div>
+              <div class="text-3xl font-extrabold font-mono text-white mt-3" id="statWave">0 FCFA</div>
+              <p class="text-xs text-zinc-400 mt-1">Sécurisé & bloqué automatiquement</p>
+            </div>
+            <span class="ios-pill px-3 py-1 text-xs font-mono font-bold text-brand-mint bg-emerald-500/10 border-emerald-500/30">50%</span>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 border-violet-500/30 bg-gradient-to-br from-violet-950/30 via-zinc-950/60 to-transparent relative overflow-hidden">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-bold text-violet-400 uppercase tracking-wider">
+                <i data-lucide="compass" class="w-4 h-4 text-violet-400"></i>
+                Projets & Sorties (50%)
+              </div>
+              <div class="text-3xl font-extrabold font-mono text-white mt-3" id="statProjects">0 FCFA</div>
+              <p class="text-xs text-zinc-400 mt-1">Budget libre pour loisirs & prod</p>
+            </div>
+            <span class="ios-pill px-3 py-1 text-xs font-mono font-bold text-violet-400 bg-violet-500/10 border-violet-500/30">50%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liste Dépenses -->
+      <div class="ios-card p-7 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/5">
+          <div>
+            <h2 class="text-lg font-extrabold text-white flex items-center gap-2.5">
+              <i data-lucide="layers" class="w-5 h-5 text-brand-emerald"></i>
+              Postes, Abonnements & Dépenses
+            </h2>
+            <p class="text-xs text-zinc-400">Gestion active pour <span id="currentMonthLabel" class="text-brand-mint font-semibold">--</span></p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openAddModal()" class="ios-pill px-5 py-2.5 text-xs font-extrabold text-zinc-950 bg-brand-emerald hover:bg-brand-mint transition-all shadow-lg glow-effect flex items-center gap-2">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              Ajouter une dépense
+            </button>
+            <button onclick="deleteCurrentMonth()" class="ios-pill p-2.5 text-rose-400 hover:bg-rose-500/10 transition-colors" title="Supprimer ce mois">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="expenseList" class="space-y-3"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Modal Créer un Mois -->
+  <div id="newMonthModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
+    <div class="ios-card max-w-sm w-full p-7 space-y-5 border-emerald-500/30 text-center">
+      <div class="flex items-center justify-between pb-3 border-b border-white/5">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="calendar-plus" class="w-4 h-4 text-brand-mint"></i>
+          Nouveau Mois
+        </h3>
+        <button onclick="closeNewMonthModal()" class="ios-pill p-1.5 text-zinc-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-left">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Nom du mois (ex: Novembre 2026)</label>
+          <input type="text" id="inputNewMonthName" placeholder="Novembre 2026" class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-transparent">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Salaire initial (FCFA)</label>
+          <input type="number" id="inputNewMonthSalary" placeholder="0" value="0" class="w-full ios-pill px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-brand-emerald bg-transparent">
+        </div>
+      </div>
+
+      <button onclick="createNewMonth()" class="w-full py-3 bg-brand-emerald text-zinc-950 font-extrabold text-xs rounded-2xl transition-all shadow-lg glow-effect">
+        Créer et basculer
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal QR Code -->
+  <div id="qrModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
+    <div class="ios-card max-w-sm w-full p-7 space-y-5 text-center border-emerald-500/30">
+      <div class="flex items-center justify-between pb-3 border-b border-white/5">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="smartphone" class="w-4 h-4 text-brand-mint"></i>
+          Scanner sur Mobile
+        </h3>
+        <button onclick="toggleQRModal()" class="ios-pill p-1.5 text-zinc-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-zinc-400 leading-relaxed">
+        Assure-toi d'être sur le <strong class="text-white">même Wi-Fi</strong>, puis scanne le code ci-dessous :
+      </p>
+
+      <div class="flex justify-center p-5 bg-white rounded-3xl shadow-2xl my-2">
+        <div id="qrcode"></div>
+      </div>
+
+      <div class="text-[10px] text-zinc-500 font-mono break-all ios-pill p-2.5" id="qrUrlText">http://...</div>
+
+      <button onclick="toggleQRModal()" class="w-full py-3 ios-pill text-xs font-bold text-white hover:bg-white/10 transition-colors">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Modal Ajout Dépense -->
+  <div id="addModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
+    <div class="ios-card max-w-md w-full p-7 space-y-5 border-emerald-500/30">
+      <div class="flex items-center justify-between pb-4 border-b border-white/5">
+        <h3 class="text-base font-extrabold text-white flex items-center gap-2">
+          <i data-lucide="plus-circle" class="w-5 h-5 text-brand-mint"></i>
+          Nouvelle Dépense / Poste
+        </h3>
+        <button onclick="closeAddModal()" class="ios-pill p-1.5 text-zinc-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleNewExpense(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Date de l'opération</label>
+          <input type="date" id="newDate" required class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-transparent">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Nom du poste</label>
+          <input type="text" id="newTitle" placeholder="ex: Studio, Matériel, Sortie..." required class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-transparent">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Montant (FCFA)</label>
+            <input type="number" id="newAmount" placeholder="0" min="0" required class="w-full ios-pill px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-brand-emerald bg-transparent">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Type</label>
+            <select id="newCategory" class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-zinc-950">
+              <option value="Dépense">Dépense</option>
+              <option value="Abonnement">Abonnement</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-3 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeAddModal()" class="px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-white">Annuler</button>
+          <button type="submit" class="px-5 py-2.5 text-xs font-extrabold bg-brand-emerald text-zinc-950 rounded-2xl transition-all shadow-lg glow-effect">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Link -->
+  <script src="app.js"></script>
+</body>
+</html>
