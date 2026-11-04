@@ -30,10 +30,24 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.ios-pill:active {
+  transform: scale(0.98);
 }
 
 .glow-effect {
   box-shadow: 0 0 30px rgba(16, 185, 129, 0.25);
+}
+
+/* Cache la barre de défilement pour un look iOS épuré */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 input[type=number]::-webkit-inner-spin-button, 

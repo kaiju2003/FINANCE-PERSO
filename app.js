@@ -1,4 +1,3 @@
-// Base totalement vide pour repartir à zéro
 const defaultState = {
   "Novembre 2026": {
     salary: 0,
@@ -8,7 +7,7 @@ const defaultState = {
 
 let state = {};
 try {
-  const saved = localStorage.getItem('kaiju_finance_clean');
+  const saved = localStorage.getItem('kaiju_finance_pure');
   state = saved ? JSON.parse(saved) : defaultState;
 } catch (e) {
   state = defaultState;
@@ -18,7 +17,7 @@ let currentMonth = Object.keys(state)[0] || "Novembre 2026";
 let qrGenerated = false;
 
 function saveState() {
-  localStorage.setItem('kaiju_finance_clean', JSON.stringify(state));
+  localStorage.setItem('kaiju_finance_pure', JSON.stringify(state));
   render();
 }
 
@@ -35,13 +34,11 @@ function formatDate(dateStr) {
   return dateStr;
 }
 
-// Génération dynamique des onglets mois
 function renderTabs() {
   const container = document.getElementById('monthTabs');
   if (!container) return;
   
   const months = Object.keys(state);
-  
   container.innerHTML = months.map(m => `
     <button onclick="selectMonth('${m}')" class="py-2 px-5 rounded-2xl text-xs font-bold transition-all whitespace-nowrap ${m === currentMonth ? 'bg-brand-emerald text-zinc-950 shadow-lg glow-effect' : 'text-zinc-400 hover:text-white bg-white/[0.02]'}">
       ${m}
@@ -56,13 +53,14 @@ function selectMonth(m) {
   render();
 }
 
-// Modals
 function openNewMonthModal() {
   const modal = document.getElementById('newMonthModal');
   if (modal) {
     modal.classList.remove('hidden');
-    document.getElementById('inputNewMonthName').value = '';
-    document.getElementById('inputNewMonthSalary').value = '';
+    const nameElem = document.getElementById('inputNewMonthName');
+    const salElem = document.getElementById('inputNewMonthSalary');
+    if (nameElem) nameElem.value = '';
+    if (salElem) salElem.value = '';
   }
 }
 
@@ -112,7 +110,6 @@ function deleteCurrentMonth() {
   }
 }
 
-// QR Code Modal
 function toggleQRModal() {
   const modal = document.getElementById('qrModal');
   if (!modal) return;
@@ -141,21 +138,23 @@ function generateQRCode() {
         correctLevel: QRCode.CorrectLevel.H
       });
       qrGenerated = true;
-    } else {
-      qrElem.innerText = "Erreur de chargement de la bibliothèque QR Code.";
     }
   }
 }
 
-// Modal Dépense avec Date
 function openAddModal() {
   const modal = document.getElementById('addModal');
   if (modal) {
     modal.classList.remove('hidden');
     const dateInput = document.getElementById('newDate');
-    if (dateInput) dateInput.valueAsDate = new Date();
-    document.getElementById('newTitle').value = '';
-    document.getElementById('newAmount').value = '';
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+    }
+    const titleElem = document.getElementById('newTitle');
+    const amountElem = document.getElementById('newAmount');
+    if (titleElem) titleElem.value = '';
+    if (amountElem) amountElem.value = '';
   }
 }
 
@@ -166,10 +165,15 @@ function closeAddModal() {
 
 function handleNewExpense(e) {
   e.preventDefault();
-  const date = document.getElementById('newDate').value;
-  const title = document.getElementById('newTitle').value.trim();
-  const amount = parseFloat(document.getElementById('newAmount').value);
-  const category = document.getElementById('newCategory').value;
+  const dateInput = document.getElementById('newDate');
+  const titleInput = document.getElementById('newTitle');
+  const amountInput = document.getElementById('newAmount');
+  const categoryInput = document.getElementById('newCategory');
+
+  const date = dateInput ? dateInput.value : '';
+  const title = titleInput ? titleInput.value.trim() : '';
+  const amount = amountInput ? parseFloat(amountInput.value) : NaN;
+  const category = categoryInput ? categoryInput.value : 'Dépense';
 
   if (!title || isNaN(amount) || !date) return;
 
@@ -205,13 +209,16 @@ function toggleSalaryEdit() {
   if (form) {
     form.classList.toggle('hidden');
     if (!form.classList.contains('hidden') && state[currentMonth]) {
-      document.getElementById('inputSalary').value = state[currentMonth].salary;
+      const inputSal = document.getElementById('inputSalary');
+      if (inputSal) inputSal.value = state[currentMonth].salary;
     }
   }
 }
 
 function saveSalary() {
-  const val = parseFloat(document.getElementById('inputSalary').value);
+  const inputSal = document.getElementById('inputSalary');
+  const val = inputSal ? parseFloat(inputSal.value) : NaN;
+  
   if (!isNaN(val) && val >= 0 && state[currentMonth]) {
     state[currentMonth].salary = val;
     const form = document.getElementById('salaryEditForm');
@@ -221,8 +228,8 @@ function saveSalary() {
 }
 
 function hardResetData() {
-  if (confirm('Effacer toutes les données et repartir totalement de zéro ?')) {
-    localStorage.removeItem('kaiju_finance_clean');
+  if (confirm('Effacer toutes les données et repartir à zéro ?')) {
+    localStorage.removeItem('kaiju_finance_pure');
     state = JSON.parse(JSON.stringify(defaultState));
     currentMonth = "Novembre 2026";
     saveState();
@@ -235,34 +242,33 @@ function render() {
   const monthData = state[currentMonth] || { salary: 0, expenses: [] };
   
   const labelElem = document.getElementById('currentMonthLabel');
-  const titleElem = document.getElementById('activeMonthTitle');
   if (labelElem) labelElem.innerText = currentMonth;
-  if (titleElem) titleElem.innerText = currentMonth;
 
   const salary = monthData.salary || 0;
   const totalExpenses = (monthData.expenses || []).reduce((sum, e) => sum + (e.amount || 0), 0);
-  const savings = salary - totalExpenses;
+  const netBalance = salary - totalExpenses;
   const expensePercent = salary > 0 ? ((totalExpenses / salary) * 100).toFixed(1) : 0;
-  const savingsRate = salary > 0 ? ((savings / salary) * 100).toFixed(1) : 0;
-
-  const waveAmount = savings > 0 ? savings * 0.5 : 0;
-  const projectAmount = savings > 0 ? savings * 0.5 : 0;
 
   const displayInc = document.getElementById('displayIncome');
   const statExp = document.getElementById('statExpenses');
   const statExpPct = document.getElementById('statExpensePercent');
-  const statSav = document.getElementById('statSavings');
-  const statSavRate = document.getElementById('statSavingsRate');
-  const statWave = document.getElementById('statWave');
-  const statProj = document.getElementById('statProjects');
+  const statNet = document.getElementById('statNetBalance');
+  const statStatus = document.getElementById('statStatusText');
 
   if (displayInc) displayInc.innerText = formatFCFA(salary);
   if (statExp) statExp.innerText = formatFCFA(totalExpenses);
   if (statExpPct) statExpPct.innerText = `${expensePercent}% du revenu`;
-  if (statSav) statSav.innerText = formatFCFA(savings);
-  if (statSavRate) statSavRate.innerText = `Épargne : ${savingsRate}%`;
-  if (statWave) statWave.innerText = formatFCFA(waveAmount);
-  if (statProj) statProj.innerText = formatFCFA(projectAmount);
+  if (statNet) statNet.innerText = formatFCFA(netBalance);
+  
+  if (statStatus) {
+    if (netBalance < 0) {
+      statStatus.innerText = "Attention : Déficit";
+      statStatus.className = "text-[11px] text-rose-400 font-mono font-bold";
+    } else {
+      statStatus.innerText = "Trésorerie saine";
+      statStatus.className = "text-[11px] text-teal-300 font-mono";
+    }
+  }
 
   const listContainer = document.getElementById('expenseList');
   if (listContainer) {
@@ -304,7 +310,6 @@ function render() {
   }
 }
 
-// Chargement sécurisé du DOM
 document.addEventListener('DOMContentLoaded', () => {
   render();
 });
