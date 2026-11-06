@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KAIJU — Executive Pro Max</title>
+  <title>KAIJU — Executive Vault Pro</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
@@ -26,9 +26,10 @@
           },
           colors: {
             brand: {
-              emerald: '#10b981',
+              emerald: '#059669',
               mint: '#34d399',
-              dark: '#030507',
+              dark: '#020408',
+              card: '#0a0f18'
             }
           }
         }
@@ -38,30 +39,30 @@
 
   <style>
     body {
-      background-color: #030507;
+      background-color: #020408;
       color: #f4f4f5;
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(5, 150, 105, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.08) 0%, transparent 45%);
       background-attachment: fixed;
       overflow-x: hidden;
     }
 
     .ios-card {
-      background: linear-gradient(135deg, rgba(20, 30, 38, 0.6) 0%, rgba(10, 15, 20, 0.75) 100%);
+      background: linear-gradient(135deg, rgba(16, 24, 39, 0.7) 0%, rgba(8, 12, 20, 0.85) 100%);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       border-radius: 28px;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .ios-card:hover {
-      border-color: rgba(16, 185, 129, 0.3);
+      border-color: rgba(52, 211, 153, 0.3);
       transform: translateY(-2px);
-      box-shadow: 0 30px 60px -20px rgba(16, 185, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 60px -20px rgba(52, 211, 153, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
     .ios-pill {
@@ -73,66 +74,68 @@
     }
 
     .ios-pill:active { transform: scale(0.98); }
-    .glow-effect { box-shadow: 0 0 30px rgba(16, 185, 129, 0.25); }
+    .glow-effect { box-shadow: 0 0 35px rgba(5, 150, 105, 0.25); }
 
     .scrollbar-none::-webkit-scrollbar { display: none; }
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
     input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
-    }
+    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     input[type=number] { -moz-appearance: textfield; }
     input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
   </style>
 </head>
-<body class="min-h-screen pb-24 antialiased selection:bg-brand-emerald/30 selection:text-brand-mint">
+<body class="min-h-screen pb-24 antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
 
   <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-10">
 
     <!-- Header Dynamic Island -->
     <header class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/5 gap-4">
       <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-emerald via-emerald-500 to-teal-400 text-zinc-950 flex items-center justify-center font-extrabold text-xl shadow-lg glow-effect">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-teal-400 text-zinc-950 flex items-center justify-center font-extrabold text-xl shadow-lg glow-effect">
           K
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="text-xl font-extrabold tracking-tight text-white">KAIJU <span class="text-brand-mint font-semibold">FINANCE</span></h1>
-            <span class="ios-pill px-3 py-0.5 text-[10px] font-mono font-bold text-brand-mint border border-emerald-500/30 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-brand-mint animate-ping"></span>
-              PRO MAX VAULT
+            <h1 class="text-xl font-extrabold tracking-tight text-white">KAIJU <span class="text-emerald-400 font-semibold">FINANCE</span></h1>
+            <span class="ios-pill px-3 py-0.5 text-[10px] font-mono font-bold text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              VAULT INTELLIGENCE
             </span>
           </div>
-          <p class="text-xs text-zinc-400 mt-0.5">Tableau de bord financier & Wave Vault 50/50</p>
+          <p class="text-xs text-zinc-400 mt-0.5">Gestion de trésorerie, coffres & sources d'épargne</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2.5">
         <button id="btnQR" class="ios-pill px-4 py-2.5 text-xs font-bold text-white hover:bg-white/10 transition-all flex items-center gap-2 border-emerald-500/30">
-          <i data-lucide="qr-code" class="w-4 h-4 text-brand-mint"></i>
+          <i data-lucide="qr-code" class="w-4 h-4 text-emerald-400"></i>
           Scanner Mobile
         </button>
-        <button id="btnNewMonth" class="ios-pill px-4 py-2.5 text-xs font-extrabold text-zinc-950 bg-brand-mint hover:bg-brand-emerald transition-all flex items-center gap-1.5 shadow-md">
+        <button id="btnNewMonth" class="ios-pill px-4 py-2.5 text-xs font-extrabold text-zinc-950 bg-emerald-400 hover:bg-emerald-500 transition-all flex items-center gap-1.5 shadow-md">
           <i data-lucide="calendar-plus" class="w-4 h-4"></i>
           Créer un mois
         </button>
         <button id="btnReset" class="ios-pill px-3 py-2.5 text-xs font-medium text-zinc-400 hover:text-white transition-all" title="Tout effacer">
-          <i data-lucide="rotate-ccw" class="w-4 h-4 text-brand-emerald"></i>
+          <i data-lucide="rotate-ccw" class="w-4 h-4 text-emerald-500"></i>
         </button>
       </div>
     </header>
 
-    <!-- Navigation principale : Vue Dépenses / Analytics -->
+    <!-- Navigation par Vues -->
     <div class="mt-6 flex items-center justify-between gap-4 flex-wrap">
-      <!-- Selecteur de Vue -->
-      <div class="ios-pill p-1 flex items-center bg-white/[0.03]">
-        <button id="tabDashboard" class="px-5 py-2 rounded-full text-xs font-bold transition-all bg-brand-emerald text-zinc-950 shadow-md">
-          <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 inline mr-1.5"></i> Opérations
+      <div class="ios-pill p-1 flex items-center bg-white/[0.03] gap-1 overflow-x-auto scrollbar-none">
+        <button id="navDashboard" class="px-4 py-2 rounded-full text-xs font-bold transition-all bg-emerald-500 text-zinc-950 shadow-md flex items-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i> Opérations
         </button>
-        <button id="tabAnalytics" class="px-5 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all">
-          <i data-lucide="line-chart" class="w-3.5 h-3.5 inline mr-1.5"></i> Analytique
+        <button id="navWave" class="px-4 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i> Coffre Wave
+        </button>
+        <button id="navProjects" class="px-4 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="compass" class="w-3.5 h-3.5 text-violet-400"></i> Projets & Sorties
+        </button>
+        <button id="navAnalytics" class="px-4 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="line-chart" class="w-3.5 h-3.5"></i> Analytique
         </button>
       </div>
 
@@ -140,29 +143,27 @@
       <div class="ios-pill p-1.5 flex items-center gap-2 overflow-x-auto scrollbar-none" id="monthTabs"></div>
     </div>
 
-    <!-- VUE 1 : DASHBOARD CORE -->
+    <!-- ================= VUE 1 : OPÉRATIONS & DASHBOARD ================= -->
     <div class="mt-8 space-y-6" id="viewDashboard">
 
-      <!-- Cartes KPI principal -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        
         <!-- Revenu -->
         <div class="ios-card p-6 space-y-3 relative overflow-hidden border-emerald-500/20">
-          <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-emerald/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
           <div class="flex items-center justify-between text-zinc-400">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-mint">Revenu Actif</span>
-            <div class="ios-pill p-2 text-brand-mint bg-brand-emerald/10">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Revenu Actif</span>
+            <div class="ios-pill p-2 text-emerald-400 bg-emerald-500/10">
               <i data-lucide="arrow-down-left" class="w-4 h-4"></i>
             </div>
           </div>
           <div class="flex items-baseline gap-2">
             <div class="text-2xl font-extrabold font-mono text-white" id="displayIncome">0 FCFA</div>
-            <button id="btnToggleSalary" class="text-xs text-brand-mint hover:underline font-semibold">[Modifier]</button>
+            <button id="btnToggleSalary" class="text-xs text-emerald-400 hover:underline font-semibold">[Modifier]</button>
           </div>
           
           <div id="salaryEditForm" class="hidden flex items-center gap-2 pt-2">
             <input type="number" id="inputSalary" placeholder="Nouveau montant..." class="bg-zinc-950 text-white text-xs font-mono px-3 py-2 rounded-xl border border-white/15 focus:outline-none w-full">
-            <button id="btnSaveSalary" class="bg-brand-emerald text-zinc-950 font-bold text-xs px-3 py-2 rounded-xl shadow-md">OK</button>
+            <button id="btnSaveSalary" class="bg-emerald-500 text-zinc-950 font-bold text-xs px-3 py-2 rounded-xl shadow-md">OK</button>
           </div>
         </div>
 
@@ -179,7 +180,7 @@
         </div>
 
         <!-- Reste Net -->
-        <div class="ios-card p-6 space-y-3 border-emerald-500/20">
+        <div class="ios-card p-6 space-y-2 border-emerald-500/20">
           <div class="flex items-center justify-between text-zinc-400">
             <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Solde Net Restant</span>
             <div class="ios-pill p-2 text-teal-300 bg-teal-500/10">
@@ -187,38 +188,42 @@
             </div>
           </div>
           <div class="text-2xl font-extrabold font-mono text-white" id="statNetBalance">0 FCFA</div>
-          <div class="text-[11px] text-teal-300 font-mono" id="statStatusText">Prêt</div>
+          <div class="text-[11px] font-mono px-2.5 py-1 rounded-xl bg-white/[0.03] border border-white/5 flex items-center gap-1.5" id="smartHealthStatus">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span id="smartHealthText">Analyse en cours...</span>
+          </div>
         </div>
-
       </div>
 
-      <!-- SPLIT 50/50 : WAVE COFFRE & PROJETS/SORTIES -->
+      <!-- Aperçu Split 50/50 -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div class="ios-card p-6 border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-zinc-950/60 to-transparent relative overflow-hidden">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-2 text-xs font-bold text-brand-mint uppercase tracking-wider">
-                <i data-lucide="lock" class="w-4 h-4 text-brand-emerald"></i>
-                Coffre Wave (50%)
+        <div onclick="switchView('wave')" class="ios-card p-5 border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-zinc-950/60 to-transparent cursor-pointer group">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="lock" class="w-5 h-5"></i>
               </div>
-              <div class="text-3xl font-extrabold font-mono text-white mt-3" id="statWave">0 FCFA</div>
-              <p class="text-xs text-zinc-400 mt-1">Épargne sécurisée à transférer</p>
+              <div>
+                <p class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Coffre Wave (50% net)</p>
+                <div class="text-2xl font-extrabold font-mono text-white mt-0.5" id="statWavePreview">0 FCFA</div>
+              </div>
             </div>
-            <span class="ios-pill px-3 py-1 text-xs font-mono font-bold text-brand-mint bg-emerald-500/10 border-emerald-500/30">50%</span>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors"></i>
           </div>
         </div>
 
-        <div class="ios-card p-6 border-violet-500/30 bg-gradient-to-br from-violet-950/30 via-zinc-950/60 to-transparent relative overflow-hidden">
-          <div class="flex items-start justify-between">
-            <div>
-              <div class="flex items-center gap-2 text-xs font-bold text-violet-400 uppercase tracking-wider">
-                <i data-lucide="compass" class="w-4 h-4 text-violet-400"></i>
-                Projets & Sorties (50%)
+        <div onclick="switchView('projects')" class="ios-card p-5 border-violet-500/30 bg-gradient-to-br from-violet-950/30 via-zinc-950/60 to-transparent cursor-pointer group">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-violet-500/20 text-violet-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="compass" class="w-5 h-5"></i>
               </div>
-              <div class="text-3xl font-extrabold font-mono text-white mt-3" id="statProjects">0 FCFA</div>
-              <p class="text-xs text-zinc-400 mt-1">Budget libre pour loisirs & matos</p>
+              <div>
+                <p class="text-xs font-bold text-violet-400 uppercase tracking-wider">Projets & Sorties (50% net)</p>
+                <div class="text-2xl font-extrabold font-mono text-white mt-0.5" id="statProjectsPreview">0 FCFA</div>
+              </div>
             </div>
-            <span class="ios-pill px-3 py-1 text-xs font-mono font-bold text-violet-400 bg-violet-500/10 border-violet-500/30">50%</span>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors"></i>
           </div>
         </div>
       </div>
@@ -228,14 +233,14 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/5">
           <div>
             <h2 class="text-lg font-extrabold text-white flex items-center gap-2.5">
-              <i data-lucide="layers" class="w-5 h-5 text-brand-emerald"></i>
-              Postes & Abonnements (<span id="currentMonthLabel" class="text-brand-mint font-semibold">--</span>)
+              <i data-lucide="layers" class="w-5 h-5 text-emerald-400"></i>
+              Postes & Abonnements (<span id="currentMonthLabel" class="text-emerald-400 font-semibold">--</span>)
             </h2>
             <p class="text-xs text-zinc-400">Suivi direct et chronologique</p>
           </div>
 
           <div class="flex items-center gap-2">
-            <button id="btnOpenAdd" class="ios-pill px-5 py-2.5 text-xs font-extrabold text-zinc-950 bg-brand-emerald hover:bg-brand-mint transition-all shadow-lg glow-effect flex items-center gap-2">
+            <button id="btnOpenAdd" class="ios-pill px-5 py-2.5 text-xs font-extrabold text-zinc-950 bg-emerald-500 hover:bg-emerald-400 transition-all shadow-lg glow-effect flex items-center gap-2">
               <i data-lucide="plus" class="w-4 h-4"></i>
               Ajouter une dépense
             </button>
@@ -250,10 +255,87 @@
 
     </div>
 
-    <!-- VUE 2 : ANALYTIQUE & GRAPHIQUES -->
+    <!-- ================= VUE 2 : COFFRE WAVE ================= -->
+    <div class="mt-8 space-y-6 hidden" id="viewWave">
+      <div class="ios-card p-7 border-emerald-500/30 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/5">
+          <div>
+            <span class="ios-pill px-3 py-1 text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border-emerald-500/30">SOURCE SÉCURISÉE</span>
+            <h2 class="text-xl font-extrabold text-white flex items-center gap-2 mt-2">
+              <i data-lucide="lock" class="w-6 h-6 text-emerald-400"></i>
+              Coffre Wave — Retraits & Épargne
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Gère l'argent mis de côté et enregistre tes retraits en cas de besoin.</p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-zinc-400 block">Solde Actuel Wave</span>
+            <span class="text-3xl font-extrabold font-mono text-emerald-400" id="waveBalanceDisplay">0 FCFA</span>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-rose-400"></i>
+            Enregistrer un retrait du Coffre Wave
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <input type="text" id="waveReason" placeholder="Raison (ex: Urgence...)" class="ios-pill px-4 py-3 text-xs text-white bg-transparent focus:outline-none focus:border-emerald-500">
+            <input type="number" id="waveAmount" placeholder="Montant (FCFA)" class="ios-pill px-4 py-3 text-xs text-white font-mono bg-transparent focus:outline-none focus:border-emerald-500">
+            <button onclick="withdrawWave()" class="py-3 px-5 bg-emerald-500 text-zinc-950 font-bold text-xs rounded-2xl hover:bg-emerald-400 transition-all shadow-md">
+              Déduire du Coffre
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-bold text-white">Historique des prélèvements Wave</h3>
+          <div id="waveHistoryList" class="space-y-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VUE 3 : PROJETS & SORTIES ================= -->
+    <div class="mt-8 space-y-6 hidden" id="viewProjects">
+      <div class="ios-card p-7 border-violet-500/30 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/5">
+          <div>
+            <span class="ios-pill px-3 py-1 text-[10px] font-mono font-bold text-violet-400 bg-violet-500/10 border-violet-500/30">BUDGET LIBRE & LOISIRS</span>
+            <h2 class="text-xl font-extrabold text-white flex items-center gap-2 mt-2">
+              <i data-lucide="compass" class="w-6 h-6 text-violet-400"></i>
+              Projets & Sorties — Budget Délégué
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Suivi de l'enveloppe dédiée au matos, sorties, studio et kiff.</p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-zinc-400 block">Solde Actuel Projets</span>
+            <span class="text-3xl font-extrabold font-mono text-violet-400" id="projectsBalanceDisplay">0 FCFA</span>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="tag" class="w-4 h-4 text-violet-400"></i>
+            Enregistrer une sortie sur le budget Projets
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <input type="text" id="projectReason" placeholder="Intitulé (ex: Studio, VST...)" class="ios-pill px-4 py-3 text-xs text-white bg-transparent focus:outline-none focus:border-violet-500">
+            <input type="number" id="projectAmount" placeholder="Montant (FCFA)" class="ios-pill px-4 py-3 text-xs text-white font-mono bg-transparent focus:outline-none focus:border-violet-500">
+            <button onclick="spendProject()" class="py-3 px-5 bg-violet-500 text-zinc-950 font-bold text-xs rounded-2xl hover:bg-violet-400 transition-all shadow-md">
+              Payer sur Projets
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-bold text-white">Historique des dépenses sur Projets & Sorties</h3>
+          <div id="projectHistoryList" class="space-y-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VUE 4 : ANALYTIQUE ================= -->
     <div class="mt-8 space-y-6 hidden" id="viewAnalytics">
 
-      <!-- Métriques Analytiques -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div class="ios-card p-6 space-y-2">
           <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Moyenne par dépense</span>
@@ -269,17 +351,16 @@
 
         <div class="ios-card p-6 space-y-2">
           <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Taux d'utilisation</span>
-          <div class="text-2xl font-extrabold font-mono text-brand-mint" id="analyticsBurnRate">0%</div>
+          <div class="text-2xl font-extrabold font-mono text-emerald-400" id="analyticsBurnRate">0%</div>
           <p class="text-[11px] text-zinc-400">Consommation du revenu</p>
         </div>
       </div>
 
-      <!-- Graphique Courbe d'Évolution -->
       <div class="ios-card p-7 space-y-4">
         <div class="flex items-center justify-between border-b border-white/5 pb-4">
           <div>
             <h3 class="text-base font-extrabold text-white flex items-center gap-2">
-              <i data-lucide="trending-up" class="w-5 h-5 text-brand-emerald"></i>
+              <i data-lucide="trending-up" class="w-5 h-5 text-emerald-400"></i>
               Évolution Cumulée des Dépenses
             </h3>
             <p class="text-xs text-zinc-400">Courbe de progression du budget dépensé par date</p>
@@ -290,7 +371,6 @@
         </div>
       </div>
 
-      <!-- Graphique Camembert par Répartition -->
       <div class="ios-card p-7 space-y-4">
         <div class="flex items-center justify-between border-b border-white/5 pb-4">
           <div>
@@ -310,12 +390,12 @@
 
   </div>
 
-  <!-- Modal Créer un Mois -->
+  <!-- Modal Nouveau Mois -->
   <div id="newMonthModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
     <div class="ios-card max-w-sm w-full p-7 space-y-5 border-emerald-500/30 text-center">
       <div class="flex items-center justify-between pb-3 border-b border-white/5">
         <h3 class="text-sm font-bold text-white flex items-center gap-2">
-          <i data-lucide="calendar-plus" class="w-4 h-4 text-brand-mint"></i>
+          <i data-lucide="calendar-plus" class="w-4 h-4 text-emerald-400"></i>
           Nouveau Mois
         </h3>
         <button id="btnCloseNewMonth" class="ios-pill p-1.5 text-zinc-400 hover:text-white">
@@ -326,15 +406,15 @@
       <div class="space-y-3 text-left">
         <div>
           <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Nom du mois (ex: Novembre 2026)</label>
-          <input type="text" id="inputNewMonthName" placeholder="Novembre 2026" class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-transparent">
+          <input type="text" id="inputNewMonthName" placeholder="Novembre 2026" class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 bg-transparent">
         </div>
         <div>
           <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Revenu initial (FCFA)</label>
-          <input type="number" id="inputNewMonthSalary" placeholder="0" value="0" class="w-full ios-pill px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-brand-emerald bg-transparent">
+          <input type="number" id="inputNewMonthSalary" placeholder="0" value="0" class="w-full ios-pill px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-emerald-500 bg-transparent">
         </div>
       </div>
 
-      <button id="btnSubmitNewMonth" class="w-full py-3 bg-brand-emerald text-zinc-950 font-extrabold text-xs rounded-2xl transition-all shadow-lg glow-effect">
+      <button id="btnSubmitNewMonth" class="w-full py-3 bg-emerald-500 text-zinc-950 font-extrabold text-xs rounded-2xl transition-all shadow-lg glow-effect">
         Créer et basculer
       </button>
     </div>
@@ -345,7 +425,7 @@
     <div class="ios-card max-w-sm w-full p-7 space-y-5 text-center border-emerald-500/30">
       <div class="flex items-center justify-between pb-3 border-b border-white/5">
         <h3 class="text-sm font-bold text-white flex items-center gap-2">
-          <i data-lucide="smartphone" class="w-4 h-4 text-brand-mint"></i>
+          <i data-lucide="smartphone" class="w-4 h-4 text-emerald-400"></i>
           Scanner sur Mobile
         </h3>
         <button id="btnCloseQR" class="ios-pill p-1.5 text-zinc-400 hover:text-white">
@@ -367,12 +447,12 @@
     </div>
   </div>
 
-  <!-- Modal Ajout Dépense -->
+  <!-- Modal Dépense -->
   <div id="addModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
     <div class="ios-card max-w-md w-full p-7 space-y-5 border-emerald-500/30">
       <div class="flex items-center justify-between pb-4 border-b border-white/5">
         <h3 class="text-base font-extrabold text-white flex items-center gap-2">
-          <i data-lucide="plus-circle" class="w-5 h-5 text-brand-mint"></i>
+          <i data-lucide="plus-circle" class="w-5 h-5 text-emerald-400"></i>
           Nouvelle Dépense / Poste
         </h3>
         <button id="btnCloseAdd" class="ios-pill p-1.5 text-zinc-400 hover:text-white">
@@ -383,22 +463,22 @@
       <form id="expenseForm" class="space-y-4">
         <div>
           <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Date de l'opération</label>
-          <input type="date" id="newDate" required class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-transparent">
+          <input type="date" id="newDate" required class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 bg-transparent">
         </div>
 
         <div>
           <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Nom du poste</label>
-          <input type="text" id="newTitle" placeholder="ex: Studio, Matériel, Sortie..." required class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-transparent">
+          <input type="text" id="newTitle" placeholder="ex: Studio, Matériel, Sortie..." required class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 bg-transparent">
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Montant (FCFA)</label>
-            <input type="number" id="newAmount" placeholder="0" min="0" required class="w-full ios-pill px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-brand-emerald bg-transparent">
+            <input type="number" id="newAmount" placeholder="0" min="0" required class="w-full ios-pill px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-emerald-500 bg-transparent">
           </div>
           <div>
             <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Type</label>
-            <select id="newCategory" class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-emerald bg-zinc-950">
+            <select id="newCategory" class="w-full ios-pill px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 bg-zinc-950">
               <option value="Dépense">Dépense</option>
               <option value="Abonnement">Abonnement</option>
             </select>
@@ -407,24 +487,26 @@
 
         <div class="pt-3 flex items-center justify-end gap-3">
           <button type="button" id="btnCancelAdd" class="px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-white">Annuler</button>
-          <button type="submit" class="px-5 py-2.5 text-xs font-extrabold bg-brand-emerald text-zinc-950 rounded-2xl transition-all shadow-lg glow-effect">Ajouter</button>
+          <button type="submit" class="px-5 py-2.5 text-xs font-extrabold bg-emerald-500 text-zinc-950 rounded-2xl transition-all shadow-lg glow-effect">Ajouter</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- SCRIPT ENGINE INTEGRATED -->
+  <!-- SCRIPT ENGINE -->
   <script>
     const defaultState = {
       "Novembre 2026": {
         salary: 0,
-        expenses: []
+        expenses: [],
+        waveWithdrawals: [],
+        projectExpenses: []
       }
     };
 
     let state = {};
     try {
-      const saved = localStorage.getItem('kaiju_finance_pure');
+      const saved = localStorage.getItem('kaiju_finance_vault_v2');
       state = saved ? JSON.parse(saved) : defaultState;
     } catch (e) {
       state = defaultState;
@@ -436,7 +518,7 @@
     let pieChartInstance = null;
 
     function saveState() {
-      localStorage.setItem('kaiju_finance_pure', JSON.stringify(state));
+      localStorage.setItem('kaiju_finance_vault_v2', JSON.stringify(state));
       render();
     }
 
@@ -456,7 +538,7 @@
       
       const months = Object.keys(state);
       container.innerHTML = months.map(m => `
-        <button onclick="selectMonth('${m}')" class="py-2 px-5 rounded-2xl text-xs font-bold transition-all whitespace-nowrap ${m === currentMonth ? 'bg-brand-emerald text-zinc-950 shadow-lg glow-effect' : 'text-zinc-400 hover:text-white bg-white/[0.02]'}">
+        <button onclick="selectMonth('${m}')" class="py-2 px-4 rounded-2xl text-xs font-bold transition-all whitespace-nowrap ${m === currentMonth ? 'bg-emerald-500 text-zinc-950 shadow-lg glow-effect' : 'text-zinc-400 hover:text-white bg-white/[0.02]'}">
           ${m}
         </button>
       `).join('');
@@ -486,11 +568,90 @@
       }
     };
 
+    window.withdrawWave = function() {
+      const reasonInput = document.getElementById('waveReason');
+      const amountInput = document.getElementById('waveAmount');
+      const reason = reasonInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+
+      if (!reason || isNaN(amount) || amount <= 0) {
+        alert("Entre une raison et un montant valide !");
+        return;
+      }
+
+      if (!state[currentMonth].waveWithdrawals) state[currentMonth].waveWithdrawals = [];
+      state[currentMonth].waveWithdrawals.push({ id: Date.now(), reason, amount, date: new Date().toISOString().split('T')[0] });
+      
+      reasonInput.value = '';
+      amountInput.value = '';
+      saveState();
+    };
+
+    window.deleteWaveWithdrawal = function(id) {
+      if (state[currentMonth] && state[currentMonth].waveWithdrawals) {
+        state[currentMonth].waveWithdrawals = state[currentMonth].waveWithdrawals.filter(w => w.id !== id);
+        saveState();
+      }
+    };
+
+    window.spendProject = function() {
+      const reasonInput = document.getElementById('projectReason');
+      const amountInput = document.getElementById('projectAmount');
+      const reason = reasonInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+
+      if (!reason || isNaN(amount) || amount <= 0) {
+        alert("Entre un intitulé et un montant valide !");
+        return;
+      }
+
+      if (!state[currentMonth].projectExpenses) state[currentMonth].projectExpenses = [];
+      state[currentMonth].projectExpenses.push({ id: Date.now(), reason, amount, date: new Date().toISOString().split('T')[0] });
+      
+      reasonInput.value = '';
+      amountInput.value = '';
+      saveState();
+    };
+
+    window.deleteProjectExpense = function(id) {
+      if (state[currentMonth] && state[currentMonth].projectExpenses) {
+        state[currentMonth].projectExpenses = state[currentMonth].projectExpenses.filter(p => p.id !== id);
+        saveState();
+      }
+    };
+
+    window.switchView = function(viewName) {
+      const views = {
+        dashboard: document.getElementById('viewDashboard'),
+        wave: document.getElementById('viewWave'),
+        projects: document.getElementById('viewProjects'),
+        analytics: document.getElementById('viewAnalytics')
+      };
+
+      const navs = {
+        dashboard: document.getElementById('navDashboard'),
+        wave: document.getElementById('navWave'),
+        projects: document.getElementById('navProjects'),
+        analytics: document.getElementById('navAnalytics')
+      };
+
+      Object.keys(views).forEach(k => {
+        if (k === viewName) {
+          views[k].classList.remove('hidden');
+          navs[k].className = "px-4 py-2 rounded-full text-xs font-bold transition-all bg-emerald-500 text-zinc-950 shadow-md flex items-center gap-1.5 whitespace-nowrap";
+        } else {
+          views[k].classList.add('hidden');
+          navs[k].className = "px-4 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 whitespace-nowrap";
+        }
+      });
+
+      if (viewName === 'analytics') renderCharts();
+    };
+
     function renderCharts() {
       const monthData = state[currentMonth] || { salary: 0, expenses: [] };
       const expenses = monthData.expenses || [];
 
-      // Metrics
       const avg = expenses.length > 0 ? expenses.reduce((s, e) => s + e.amount, 0) / expenses.length : 0;
       let maxExpense = { amount: 0, title: 'Aucune' };
       expenses.forEach(e => {
@@ -504,19 +665,14 @@
       document.getElementById('analyticsMaxTitle').innerText = maxExpense.title !== 'Aucune' ? `${maxExpense.title} (${formatDate(maxExpense.date)})` : 'Aucune dépense';
       document.getElementById('analyticsBurnRate').innerText = `${burnRate}%`;
 
-      // 1. Line Chart Data
       const sorted = [...expenses].sort((a, b) => new Date(a.date) - new Date(b.date));
       const datesMap = {};
       let runningTotal = 0;
-
       sorted.forEach(e => {
         const d = formatDate(e.date);
         runningTotal += e.amount;
         datesMap[d] = runningTotal;
       });
-
-      const labelsLine = Object.keys(datesMap);
-      const dataLine = Object.values(datesMap);
 
       const ctxLine = document.getElementById('chartExpensesLine').getContext('2d');
       if (lineChartInstance) lineChartInstance.destroy();
@@ -524,12 +680,12 @@
       lineChartInstance = new Chart(ctxLine, {
         type: 'line',
         data: {
-          labels: labelsLine.length ? labelsLine : ['Aucune donnée'],
+          labels: Object.keys(datesMap).length ? Object.keys(datesMap) : ['Aucune donnée'],
           datasets: [{
             label: 'Dépenses cumulées (FCFA)',
-            data: dataLine.length ? dataLine : [0],
-            borderColor: '#10b981',
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            data: Object.values(datesMap).length ? Object.values(datesMap) : [0],
+            borderColor: '#059669',
+            backgroundColor: 'rgba(5, 150, 105, 0.1)',
             borderWidth: 3,
             fill: true,
             tension: 0.35,
@@ -548,7 +704,6 @@
         }
       });
 
-      // 2. Pie Chart Data
       let depTotal = 0;
       let subTotal = 0;
       expenses.forEach(e => {
@@ -565,7 +720,7 @@
           labels: ['Dépenses Ponctuelles', 'Abonnements'],
           datasets: [{
             data: [depTotal, subTotal],
-            backgroundColor: ['#8b5cf6', '#10b981'],
+            backgroundColor: ['#7c3aed', '#059669'],
             borderWidth: 0
           }]
         },
@@ -582,7 +737,7 @@
     function render() {
       renderTabs();
 
-      const monthData = state[currentMonth] || { salary: 0, expenses: [] };
+      const monthData = state[currentMonth] || { salary: 0, expenses: [], waveWithdrawals: [], projectExpenses: [] };
       const labelElem = document.getElementById('currentMonthLabel');
       if (labelElem) labelElem.innerText = currentMonth;
 
@@ -591,27 +746,43 @@
       const netBalance = salary - totalExpenses;
       const expensePercent = salary > 0 ? ((totalExpenses / salary) * 100).toFixed(1) : 0;
 
-      // Calcul Répartition 50 / 50
-      const waveAmount = netBalance > 0 ? netBalance * 0.5 : 0;
-      const projectAmount = netBalance > 0 ? netBalance * 0.5 : 0;
+      const baseHalf = netBalance > 0 ? netBalance * 0.5 : 0;
+
+      const totalWaveWithdrawn = (monthData.waveWithdrawals || []).reduce((s, w) => s + w.amount, 0);
+      const totalProjectSpent = (monthData.projectExpenses || []).reduce((s, p) => s + p.amount, 0);
+
+      const waveFinalBalance = Math.max(0, baseHalf - totalWaveWithdrawn);
+      const projectFinalBalance = Math.max(0, baseHalf - totalProjectSpent);
 
       document.getElementById('displayIncome').innerText = formatFCFA(salary);
       document.getElementById('statExpenses').innerText = formatFCFA(totalExpenses);
       document.getElementById('statExpensePercent').innerText = `${expensePercent}% du revenu`;
       document.getElementById('statNetBalance').innerText = formatFCFA(netBalance);
 
-      document.getElementById('statWave').innerText = formatFCFA(waveAmount);
-      document.getElementById('statProjects').innerText = formatFCFA(projectAmount);
+      document.getElementById('statWavePreview').innerText = formatFCFA(waveFinalBalance);
+      document.getElementById('statProjectsPreview').innerText = formatFCFA(projectFinalBalance);
 
-      const statStatus = document.getElementById('statStatusText');
-      if (statStatus) {
-        if (netBalance < 0) {
-          statStatus.innerText = "Attention : Déficit";
-          statStatus.className = "text-[11px] text-rose-400 font-mono font-bold";
-        } else {
-          statStatus.innerText = "Trésorerie saine";
-          statStatus.className = "text-[11px] text-teal-300 font-mono";
-        }
+      document.getElementById('waveBalanceDisplay').innerText = formatFCFA(waveFinalBalance);
+      document.getElementById('projectsBalanceDisplay').innerText = formatFCFA(projectFinalBalance);
+
+      const smartText = document.getElementById('smartHealthText');
+      const smartBadge = document.getElementById('smartHealthStatus');
+      
+      if (salary === 0) {
+        smartText.innerText = "Définit ton revenu actif";
+        smartBadge.className = "text-[11px] font-mono px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 flex items-center gap-1.5";
+      } else if (netBalance < 0) {
+        smartText.innerText = "Alerte rouge : Budget dépassé !";
+        smartBadge.className = "text-[11px] font-mono px-2.5 py-1 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center gap-1.5";
+      } else if (expensePercent > 80) {
+        smartText.innerText = "Attention : Rythme de dépenses critique (>80%)";
+        smartBadge.className = "text-[11px] font-mono px-2.5 py-1 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-300 flex items-center gap-1.5";
+      } else if (expensePercent > 50) {
+        smartText.innerText = "Zone de vigilance : Plus de la moitié dépensée";
+        smartBadge.className = "text-[11px] font-mono px-2.5 py-1 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-300 flex items-center gap-1.5";
+      } else {
+        smartText.innerText = "Trésorerie saine & maîtrisée";
+        smartBadge.className = "text-[11px] font-mono px-2.5 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 flex items-center gap-1.5";
       }
 
       const listContainer = document.getElementById('expenseList');
@@ -621,9 +792,9 @@
         } else {
           const sorted = [...monthData.expenses].sort((a, b) => new Date(a.date) - new Date(b.date));
           listContainer.innerHTML = sorted.map(e => `
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-brand-emerald/30 transition-all group gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all group gap-3">
               <div class="flex items-center gap-3.5">
-                <span class="w-2.5 h-2.5 rounded-full ${e.category === 'Abonnement' ? 'bg-brand-emerald glow-effect' : 'bg-violet-400'}"></span>
+                <span class="w-2.5 h-2.5 rounded-full ${e.category === 'Abonnement' ? 'bg-emerald-500 glow-effect' : 'bg-violet-400'}"></span>
                 <div>
                   <div class="flex items-center gap-2">
                     <p class="text-sm font-bold text-white tracking-wide">${e.title}</p>
@@ -648,33 +819,57 @@
         }
       }
 
-      renderCharts();
+      const waveHistoryContainer = document.getElementById('waveHistoryList');
+      if (waveHistoryContainer) {
+        const waves = monthData.waveWithdrawals || [];
+        if (waves.length === 0) {
+          waveHistoryContainer.innerHTML = `<p class="text-xs text-zinc-500 italic py-2">Aucun prélèvement effectué dans le coffre Wave ce mois-ci.</p>`;
+        } else {
+          waveHistoryContainer.innerHTML = waves.map(w => `
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs">
+              <div>
+                <span class="font-bold text-white">${w.reason}</span>
+                <span class="text-[10px] text-zinc-400 ml-2 font-mono">${formatDate(w.date)}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="font-mono font-bold text-rose-400">-${formatFCFA(w.amount)}</span>
+                <button onclick="deleteWaveWithdrawal(${w.id})" class="text-zinc-500 hover:text-rose-400"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+
+      const projectHistoryContainer = document.getElementById('projectHistoryList');
+      if (projectHistoryContainer) {
+        const projs = monthData.projectExpenses || [];
+        if (projs.length === 0) {
+          projectHistoryContainer.innerHTML = `<p class="text-xs text-zinc-500 italic py-2">Aucune dépense enregistrée sur les projets/sorties ce mois-ci.</p>`;
+        } else {
+          projectHistoryContainer.innerHTML = projs.map(p => `
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs">
+              <div>
+                <span class="font-bold text-white">${p.reason}</span>
+                <span class="text-[10px] text-zinc-400 ml-2 font-mono">${formatDate(p.date)}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="font-mono font-bold text-rose-400">-${formatFCFA(p.amount)}</span>
+                <button onclick="deleteProjectExpense(${p.id})" class="text-zinc-500 hover:text-rose-400"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+
       if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Navigation Onglets
-      const tabDash = document.getElementById('tabDashboard');
-      const tabAna = document.getElementById('tabAnalytics');
-      const viewDash = document.getElementById('viewDashboard');
-      const viewAna = document.getElementById('viewAnalytics');
+      document.getElementById('navDashboard').addEventListener('click', () => switchView('dashboard'));
+      document.getElementById('navWave').addEventListener('click', () => switchView('wave'));
+      document.getElementById('navProjects').addEventListener('click', () => switchView('projects'));
+      document.getElementById('navAnalytics').addEventListener('click', () => switchView('analytics'));
 
-      tabDash.addEventListener('click', () => {
-        tabDash.className = "px-5 py-2 rounded-full text-xs font-bold transition-all bg-brand-emerald text-zinc-950 shadow-md";
-        tabAna.className = "px-5 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all";
-        viewDash.classList.remove('hidden');
-        viewAna.classList.add('hidden');
-      });
-
-      tabAna.addEventListener('click', () => {
-        tabAna.className = "px-5 py-2 rounded-full text-xs font-bold transition-all bg-brand-emerald text-zinc-950 shadow-md";
-        tabDash.className = "px-5 py-2 rounded-full text-xs font-bold text-zinc-400 hover:text-white transition-all";
-        viewAna.classList.remove('hidden');
-        viewDash.classList.add('hidden');
-        renderCharts();
-      });
-
-      // Modals Listeners
       document.getElementById('btnOpenAdd').addEventListener('click', () => {
         document.getElementById('addModal').classList.remove('hidden');
         document.getElementById('newDate').value = new Date().toISOString().split('T')[0];
@@ -698,7 +893,7 @@
         if (!name) return alert("Nom invalide");
         if (state[name]) return alert("Ce mois existe déjà");
 
-        state[name] = { salary: isNaN(salary) ? 0 : salary, expenses: [] };
+        state[name] = { salary: isNaN(salary) ? 0 : salary, expenses: [], waveWithdrawals: [], projectExpenses: [] };
         currentMonth = name;
         saveState();
         document.getElementById('newMonthModal').classList.add('hidden');
@@ -712,7 +907,7 @@
         const category = document.getElementById('newCategory').value;
 
         if (!title || isNaN(amount) || !date) return;
-        if (!state[currentMonth]) state[currentMonth] = { salary: 0, expenses: [] };
+        if (!state[currentMonth]) state[currentMonth] = { salary: 0, expenses: [], waveWithdrawals: [], projectExpenses: [] };
 
         state[currentMonth].expenses.push({ id: Date.now(), date, title, amount, category });
         saveState();
@@ -747,7 +942,7 @@
 
       document.getElementById('btnReset').addEventListener('click', () => {
         if (confirm("Réinitialiser totalement ?")) {
-          localStorage.removeItem('kaiju_finance_pure');
+          localStorage.removeItem('kaiju_finance_vault_v2');
           state = JSON.parse(JSON.stringify(defaultState));
           currentMonth = "Novembre 2026";
           saveState();
@@ -764,7 +959,7 @@
               text: window.location.href,
               width: 160,
               height: 160,
-              colorDark: "#030507",
+              colorDark: "#020408",
               colorLight: "#ffffff",
               correctLevel: QRCode.CorrectLevel.H
             });
